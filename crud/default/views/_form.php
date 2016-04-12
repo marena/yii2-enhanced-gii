@@ -29,6 +29,7 @@ foreach ($relations as $name => $rel) {
                 . "    'viewParams' => [\n"
                 . "        'class' => '$rel[1]', \n"
                 . "        'relID' => '$relID', \n"
+                . "        'value' => \yii\helpers\Json::encode(\$model->$name),\n"
                 . "        'isNewRecord' => (\$model->isNewRecord) ? 1 : 0\n"
                 . "    ]\n"
                 . "]);\n";
@@ -53,7 +54,7 @@ foreach ($relations as $name => $rel) {
     $relID = Inflector::camel2id($rel[1]);
     if ($rel[2] && isset($rel[3]) && !in_array($name, $generator->skippedRelations)) {
         echo "    <div class=\"form-group\" id=\"add-$relID\">\n"
-            . "        <?php echo $this->render('_formProductMaterialItem', ['row'=>\yii\helpers\Json::encode(\$model->$name)]); ?>\n"
+            . "        <?= \$this->render('_form".$rel[1]."', ['row'=>\yii\helpers\ArrayHelper::toArray(\$model->$name)]); ?>\n"
             . "    </div>\n\n";
     }
 }
