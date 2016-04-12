@@ -348,9 +348,9 @@ class Generator extends \yii\gii\Generator
                     $searchModelClassName = $modelClassName . 'Search';
                 } else {
                     if ($this->nsSearchModel === $this->nsModel && $this->searchModelClass === $modelClassName) {
-                                            $searchModelClassName = $this->searchModelClass . 'Search';
+                        $searchModelClassName = $this->searchModelClass . 'Search';
                     } else {
-                                            $searchModelClassName = $this->searchModelClass;
+                        $searchModelClassName = $this->searchModelClass;
                     }
                 }
                 $this->searchModelClass = $this->nsSearchModel . '\\' . $searchModelClassName;
@@ -1066,7 +1066,7 @@ class Generator extends \yii\gii\Generator
             if (is_array($column->enumValues) && count($column->enumValues) > 0) {
                 $dropDownOptions = [];
                 foreach ($column->enumValues as $enumValue) {
-                    $dropDownOptions[$enumValue] = Inflector::humanize($enumValue);
+                    $dropDownOptions[$enumValue] = $this->generateString(Inflector::humanize($enumValue));
                 }
                 return "'$attribute' => ['type' => TabularForm::INPUT_DROPDOWN_LIST,
                     'options' => [
@@ -1153,7 +1153,7 @@ class Generator extends \yii\gii\Generator
             if (is_array($column->enumValues) && count($column->enumValues) > 0) {
                 $dropDownOptions = [];
                 foreach ($column->enumValues as $enumValue) {
-                    $dropDownOptions[$enumValue] = Inflector::humanize($enumValue);
+                    $dropDownOptions[$enumValue] = $this->generateString(Inflector::humanize($enumValue));
                 }
                 return "\$form->field(\$model, '$attribute')->dropDownList("
                 . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)) . ", ['prompt' => ''])";
@@ -1240,9 +1240,9 @@ class Generator extends \yii\gii\Generator
                 return "\$form->field(\$model, '$attribute')->dropDownList("
                 . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)) . ", ['prompt' => ''])";
             } elseif ($column->phpType !== 'string' || $column->size === null) {
-                return "\$form->field(\$model, '$attribute')->$input(['placeholder' => '$placeholder'])";
+                return "\$form->field(\$model, '$attribute')->$input(['placeholder' => '$this->generateString($placeholder)'])";
             } else {
-                return "\$form->field(\$model, '$attribute')->$input(['maxlength' => true, 'placeholder' => '$placeholder'])";
+                return "\$form->field(\$model, '$attribute')->$input(['maxlength' => true, 'placeholder' => '$this->generateString($placeholder)'])";
             }
         }
     }
