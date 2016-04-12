@@ -1,6 +1,6 @@
 {
-    "name": "mootensai/yii2-enhanced-gii",
-    "description": "Generate Relational (has many) Models & CRUD. For nested : mootensai/yii2-enhanced-gii-nested",
+    "name": "marena/yii2-enhanced-gii",
+    "description": "Generate Relational (has many) Models & CRUD.",
     "keywords": ["relation", "gii", "yii2", "yii", "enhanced"],
     "license": "BSD-3-Clause",
     "type": "yii2-extension",
@@ -12,6 +12,10 @@
         {
             "name": "Jiwantoro Ndaru",
             "email": "jiwanndaru@gmail.com"
+        },
+        {
+            "name": "Marek Paul",
+            "email": "marena@giss.cz"
         }
     ],
     "require": {

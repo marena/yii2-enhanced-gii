@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 /* @var $model <?= ltrim($generator->modelClass, '\\') ?> */
 /* @var $form yii\widgets\ActiveForm */
 
-<?php 
+<?php
 $pk = empty($generator->tableSchema->primaryKey) ? $generator->tableSchema->getColumnNames()[0] : $generator->tableSchema->primaryKey[0];
 $modelClass = StringHelper::basename($generator->modelClass);
 foreach ($relations as $name => $rel) {
@@ -29,7 +29,6 @@ foreach ($relations as $name => $rel) {
                 . "    'viewParams' => [\n"
                 . "        'class' => '$rel[1]', \n"
                 . "        'relID' => '$relID', \n"
-                . "        'value' => \yii\helpers\Json::encode(\$model->$name),\n"
                 . "        'isNewRecord' => (\$model->isNewRecord) ? 1 : 0\n"
                 . "    ]\n"
                 . "]);\n";
@@ -41,7 +40,7 @@ foreach ($relations as $name => $rel) {
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
     <?= "<?php " ?>$form = ActiveForm::begin(); ?>
-    
+
     <?= "<?= " ?>$form->errorSummary($model); ?>
 
 <?php foreach ($generator->tableSchema->getColumnNames() as $attribute) {
@@ -49,11 +48,13 @@ foreach ($relations as $name => $rel) {
         echo "    <?= " . $generator->generateActiveField($attribute, $generator->generateFK()) . " ?>\n\n";
     }
 } ?>
-<?php 
+<?php
 foreach ($relations as $name => $rel) {
     $relID = Inflector::camel2id($rel[1]);
     if ($rel[2] && isset($rel[3]) && !in_array($name, $generator->skippedRelations)) {
-        echo "    <div class=\"form-group\" id=\"add-$relID\"></div>\n\n";
+        echo "    <div class=\"form-group\" id=\"add-$relID\">\n"
+            . "        <?php echo $this->render('_formProductMaterialItem', ['row'=>\yii\helpers\Json::encode(\$model->$name)]); ?>\n"
+            . "    </div>\n\n";
     }
 }
 ?>
