@@ -41,6 +41,7 @@ foreach ($relations as $name => $rel) {
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
     <?= "<?php " ?>$form = ActiveForm::begin([
+        'action' => $model->isNewRecord ? Url::to(['create']) : Url::to(['update', 'id' => $model->id]),
         'options' => [
             'id' => '<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form'
         ]

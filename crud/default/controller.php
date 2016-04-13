@@ -124,7 +124,6 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionCreate()
     {
         $model = new <?= $modelClass ?>();
-        $view = 'create;
         $render_data = [
             'model' => $model
         ];
@@ -133,13 +132,13 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
             if (!Yii::$app->request->isAjax) {
                 return $this->redirect(['update', <?= $urlParams ?>]);
             }
-            $view = 'update';
+            return $this->actionUpdate($model->id);
         }
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax($view, $render_data);
+            return $this->renderAjax('create', $render_data);
         } else {
-            return $this->render($view, $render_data);
+            return $this->render('create', $render_data);
         }
     }
 
