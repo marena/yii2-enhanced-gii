@@ -55,7 +55,6 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update','delete'],
                         'roles' => ['@']
                     ],
                     [
@@ -127,7 +126,15 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = new <?= $modelClass ?>();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', <?= $urlParams ?>]);
+            if (!Yii::$app->request->isAjax) {
+                return $this->redirect(['update', <?= $urlParams ?>]);
+            }
+        }
+
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('create', [
+                'model' => $model
+            ]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -146,7 +153,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = $this->findModel(<?= $actionParams ?>);
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', <?= $urlParams ?>]);
+            return $this->redirect(['update', <?= $urlParams ?>]);
+        }
+        if (Yii::$app->request->isAjax) {
+            return $this->renderAjax('update', [
+                'model' => $model
+            ]);
         } else {
             return $this->render('update', [
                 'model' => $model,
