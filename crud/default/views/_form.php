@@ -10,6 +10,7 @@ echo "<?php\n";
 ?>
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 <?php
 // @TODO : use namespace of foreign keys & widgets
