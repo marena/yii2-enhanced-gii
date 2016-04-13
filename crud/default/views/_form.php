@@ -40,7 +40,11 @@ foreach ($relations as $name => $rel) {
 
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form">
 
-    <?= "<?php " ?>$form = ActiveForm::begin(); ?>
+    <?= "<?php " ?>$form = ActiveForm::begin([
+        'options' => [
+            'id' => '<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-form'
+        ]
+    ]); ?>
 
     <?= "<?= " ?>$form->errorSummary($model); ?>
 

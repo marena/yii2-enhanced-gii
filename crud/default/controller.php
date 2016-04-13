@@ -124,21 +124,22 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionCreate()
     {
         $model = new <?= $modelClass ?>();
+        $view = 'create;
+        $render_data = [
+            'model' => $model
+        ];
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
             if (!Yii::$app->request->isAjax) {
                 return $this->redirect(['update', <?= $urlParams ?>]);
             }
+            $view = 'update';
         }
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('create', [
-                'model' => $model
-            ]);
+            return $this->renderAjax($view, $render_data);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            return $this->render($view, $render_data);
         }
     }
 
@@ -151,18 +152,19 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
     public function actionUpdate(<?= $actionParams ?>)
     {
         $model = $this->findModel(<?= $actionParams ?>);
+        $render_data = [
+            'model' => $model
+        ];
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['update', <?= $urlParams ?>]);
+            if (!Yii::$app->request->isAjax) {
+                return $this->redirect(['update', <?= $urlParams ?>]);
+            }
         }
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('update', [
-                'model' => $model
-            ]);
+            return $this->renderAjax('update', $render_data);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->render('update', $render_data);
         }
     }
 
