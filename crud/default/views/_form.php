@@ -75,3 +75,4 @@ foreach ($relations as $name => $rel) {
     <?= "<?php " ?>ActiveForm::end(); ?>
 
 </div>
+<\?= $this->render('/layouts/flash'); ?>

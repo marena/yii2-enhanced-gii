@@ -89,7 +89,7 @@ if ($generator->indexWidgetType === 'grid'):
             endif;
         endforeach; ?>
         [
-            'class' => 'yii\grid\ActionColumn',
+            'class' => 'kartik\grid\ActionColumn',
         ],
     ]; 
 <?php 

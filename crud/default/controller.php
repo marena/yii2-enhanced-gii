@@ -4,6 +4,7 @@
  * This is the template for generating a CRUD controller class file.
  */
 use yii\helpers\StringHelper;
+use yii\helpers\Inflector;
 
 /* @var $this yii\web\View */
 /* @var $generator \mootensai\enhancedgii\crud\Generator */
@@ -129,6 +130,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ];
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+
+            Yii::$app->getSession()->setFlash('success', [
+                'type' => 'success',
+                'message' => <?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass)) .' was successfuly created') ?>,
+            ]);
+
             if (!Yii::$app->request->isAjax) {
                 return $this->redirect(['update', <?= $urlParams ?>]);
             }
@@ -156,6 +163,12 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         ];
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
+
+            Yii::$app->getSession()->setFlash('success', [
+                'type' => 'success',
+                'message' => <?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass)) .' was successfuly updated') ?>,
+            ]);
+
             if (!Yii::$app->request->isAjax) {
                 return $this->redirect(['update', <?= $urlParams ?>]);
             }
