@@ -1240,9 +1240,9 @@ class Generator extends \yii\gii\Generator
                 return "\$form->field(\$model, '$attribute')->dropDownList("
                 . preg_replace("/\n\s*/", ' ', VarDumper::export($dropDownOptions)) . ", ['prompt' => ''])";
             } elseif ($column->phpType !== 'string' || $column->size === null) {
-                return "\$form->field(\$model, '$attribute')->$input(['placeholder' => '$this->generateString($placeholder)'])";
+                return "\$form->field(\$model, '$attribute')->$input()";
             } else {
-                return "\$form->field(\$model, '$attribute')->$input(['maxlength' => true, 'placeholder' => '$this->generateString($placeholder)'])";
+                return "\$form->field(\$model, '$attribute')->$input(['maxlength' => true])";
             }
         }
     }

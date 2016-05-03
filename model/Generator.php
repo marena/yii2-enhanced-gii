@@ -456,7 +456,7 @@ class Generator extends \yii\gii\Generator {
                     $refTableSchema = $db->getTableSchema($refTable);
                     unset($refs[0]);
                     $fks = array_keys($refs);
-                    
+
                     if (strpos($this->tableName, '*') !== false) {
                         $refClassName = $this->generateClassName($refTableSchema->fullName);
                     } else {
