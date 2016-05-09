@@ -138,12 +138,13 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
 
             if (!Yii::$app->request->isAjax) {
                 return $this->redirect(['update', <?= $urlParams ?>]);
+            } else {
+                return $this->actionUpdate($model->id);
             }
-            return $this->actionUpdate($model->id);
         }
 
         if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('create', $render_data);
+            return $this->renderAjax('update', $render_data);
         } else {
             return $this->render('create', $render_data);
         }
