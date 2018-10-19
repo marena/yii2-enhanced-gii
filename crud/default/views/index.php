@@ -31,7 +31,7 @@ $this->registerJs($search);
 ?>
 <div class="<?= Inflector::camel2id($baseModelClass) ?>-index">
 
-    <h1><?= $generator->generateString($this->title) ?></h1>
+    <h1><?= "<?= " ?> $this->title ?></h1>
 <?php if (!empty($generator->searchModelClass)): ?>
 <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
 <?php endif; ?>
