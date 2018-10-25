@@ -1,42 +1,54 @@
 {
-    "name": "marena/yii2-enhanced-gii",
-    "description": "Generate Relational (has many) Models & CRUD.",
-    "keywords": ["relation", "gii", "yii2", "yii", "enhanced"],
-    "license": "BSD-3-Clause",
-    "type": "yii2-extension",
-    "authors": [
-        {
-            "name": "Yohanes Candrajaya",
-            "email": "moo.tensai@gmail.com"
-        },
-        {
-            "name": "Jiwantoro Ndaru",
-            "email": "jiwanndaru@gmail.com"
-        },
-        {
-            "name": "Marek Paul",
-            "email": "marena@giss.cz"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "*",
-        "mootensai/yii2-uuid-behavior": "*",
-        "mootensai/yii2-relation-trait": "*",
-        "mootensai/yii2-jsblock": "*",
-        "mootensai/yii2-optimistic-lock-validator": "*",
-        "kartik-v/yii2-builder": "*",
-        "kartik-v/yii2-grid": "*",
-        "kartik-v/yii2-widgets": "*",
-        "kartik-v/yii2-mpdf": "*",
-        "kartik-v/yii2-export": "*",
-        "kartik-v/yii2-tabs-x": "*"
+  "name": "marena/yii2-enhanced-gii",
+  "description": "Generate Relational (has many) Models & CRUD.",
+  "keywords": [
+    "relation",
+    "gii",
+    "yii2",
+    "yii",
+    "enhanced"
+  ],
+  "license": "BSD-3-Clause",
+  "type": "yii2-extension",
+  "authors": [
+    {
+      "name": "Yohanes Candrajaya",
+      "email": "moo.tensai@gmail.com"
     },
-    "autoload": {
-        "psr-4": {
-            "mootensai\\enhancedgii\\": ""
-        }
+    {
+      "name": "Jiwantoro Ndaru",
+      "email": "jiwanndaru@gmail.com"
     },
-    "extra": {
-        "bootstrap": "mootensai\\enhancedgii\\Bootstrap"
+    {
+      "name": "Marek Paul",
+      "email": "marena@giss.cz"
     }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/marena/yii2-relation-trait"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "*",
+    "mootensai/yii2-uuid-behavior": "*",
+    "mootensai/yii2-relation-trait": "dev-master",
+    "mootensai/yii2-jsblock": "*",
+    "mootensai/yii2-optimistic-lock-validator": "*",
+    "kartik-v/yii2-builder": "*",
+    "kartik-v/yii2-grid": "*",
+    "kartik-v/yii2-widgets": "*",
+    "kartik-v/yii2-mpdf": "*",
+    "kartik-v/yii2-export": "*",
+    "kartik-v/yii2-tabs-x": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "mootensai\\enhancedgii\\": ""
+    }
+  },
+  "extra": {
+    "bootstrap": "mootensai\\enhancedgii\\Bootstrap"
+  }
 }
