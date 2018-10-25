@@ -33,7 +33,7 @@
   "require": {
     "yiisoft/yii2": "*",
     "mootensai/yii2-uuid-behavior": "*",
-    "marena/yii2-relation-trait": "*",
+    "marena/yii2-relation-trait": "^1.1",
     "mootensai/yii2-jsblock": "*",
     "mootensai/yii2-optimistic-lock-validator": "*",
     "kartik-v/yii2-builder": "*",
