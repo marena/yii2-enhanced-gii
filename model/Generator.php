@@ -1201,7 +1201,8 @@ class Generator extends \yii\gii\Generator
 
     public function getBaseClassName($class)
     {
-        return array_pop(explode('\\', $class));
+        $array = explode('\\', $class);
+        return array_pop($array);
     }
 
     public function getClassFromString($string)

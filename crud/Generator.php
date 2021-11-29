@@ -1743,7 +1743,8 @@ class Generator extends \yii\gii\Generator
 
     public function getSimpleClass($class)
     {
-        return array_pop(explode('\\', $class));
+        $array = explode('\\', $class);
+        return array_pop($array);
     }
 
 }
